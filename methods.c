@@ -2,9 +2,8 @@
 
 /**
  * get_handler - Get message after ^C
- * @signo: integer
  */
-void get_handler(__attribute__((unused)) int signo)
+void get_handler(void)
 {
 	write(STDOUT_FILENO, "\n$", 4);
 }
