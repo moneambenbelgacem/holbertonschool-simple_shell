@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - Entry place
@@ -6,4 +6,8 @@
  */
 int main(void)
 {
+	while (1)
+	{
+		kep_it_handler();
+	}
 }

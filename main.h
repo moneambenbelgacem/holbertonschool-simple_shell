@@ -11,4 +11,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+void kep_it_handler(void);
+
 #endif
