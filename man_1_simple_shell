@@ -57,3 +57,5 @@ OLDPWD' The previous logical value of the current working directory. This is set
 dash(1)
 .SH BUGS
 Not known.
+.SH AUTHOR
+Thamer Ayachi & Moneam Ben Belgacem & Oumaima Mizouni
