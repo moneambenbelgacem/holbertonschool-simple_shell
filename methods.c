@@ -3,7 +3,7 @@
 /**
  * get_handler - Get message after ^C
  */
-void get_handler(void)
+void get_handler(__attribute__((unused)) int signo)
 {
 	write(STDOUT_FILENO, "\n$", 4);
 }
