@@ -6,7 +6,7 @@
  */
 void get_handler(__attribute__((unused)) int signo)
 {
-	write(STDOUT_FILENO, "\n$", 4);
+	write(STDOUT_FILENO, "\n", 4);
 }
 
 /**
@@ -61,7 +61,7 @@ int _strlen(const char *str)
 {
 	int i = 0;
 
-	while (s[i])
+	while (str[i])
 		i++;
 
 	return (i);
