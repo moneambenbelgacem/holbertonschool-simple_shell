@@ -14,7 +14,7 @@ int main(void)
 	{
 		kep_it_handler();
 		counter = getline(&buffer, &i, stdin);
-		printf("%s", buffer);
-		printf("%d\n", counter);
+		if (counter == 1)
+			free_and_exit(buffer);
 	}
 }
