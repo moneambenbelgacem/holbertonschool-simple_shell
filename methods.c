@@ -51,3 +51,18 @@ char *str_concat(char *s1, char *s2)
 
 	return (str);
 }
+
+/**
+ * _strlen - get length of string
+ * @str: constant string
+ * Return: integer
+ */
+int _strlen(const char *str)
+{
+	int i = 0;
+
+	while (s[i])
+		i++;
+
+	return (i);
+}

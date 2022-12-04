@@ -16,5 +16,6 @@ extern char **environ;
 void kep_it_handler(void);
 char *str_concat(char *s1, char *s2);
 int _setenv(char *name, char *value, int overwrite);
+int _strlen(const char *str);
 
 #endif

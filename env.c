@@ -23,7 +23,7 @@ char *create_variable(char *name, char *value)
 }
 
 /**
- * setenv - set env variables and overwrite
+ * _setenv - set env variables and overwrite
  * @name: name of variable
  * @value: value of variable
  * @overwrite: if need overwrite
@@ -57,4 +57,19 @@ int _setenv(char *name, char *value, int overwrite)
 		return (-1);
 	environ[i + 1] = NULL;
 	return (0);
+}
+
+/**
+ * printEnv - print all variables from env
+ */
+void printEnv(void)
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		write(1, environ[i], _strlen(environ[i]));
+		write(1, "\n", 1);
+		i++;
+	}
 }
