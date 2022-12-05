@@ -22,5 +22,9 @@ void free_env(char *var_name);
 int chars_checks(char *str);
 char *clearBuffer(char *str, int counter);
 char *_strtok(char *str, char delim);
+char *_strdup(const char *str);
+int _strcmp(const char *s1, const char *s2);
+char *_getenv(const char *name);
+int check_dir(char *str);
 
 #endif

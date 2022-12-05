@@ -73,3 +73,39 @@ void printEnv(void)
 		i++;
 	}
 }
+
+/**
+ * _getenv - get value of variable env
+ * @name: constant string
+ * Return: string
+ */
+char *_getenv(const char *name)
+{
+	char *token, *value, *cpy;
+	size_t i = 0;
+
+	if (name == NULL)
+		exit(1);
+
+	while (environ[i] != NULL)
+	{
+		cpy = _strdup(environ[i]);
+		token = _strtok(cpy, '=');
+		if (_strcmp(name, token) == 0)
+		{
+			token = _strtok(NULL, '=');
+			value = malloc(sizeof(char) * _strlen(token) + 1);
+			if (value == NULL)
+			{
+				free(cpy);
+				return (NULL);
+			}
+			strcpy(value, token);
+			free(cpy);
+			break;
+		}
+		i++;
+		free(cpy);
+	}
+	return (value);
+}
