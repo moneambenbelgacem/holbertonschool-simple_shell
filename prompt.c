@@ -1,9 +1,14 @@
 #include "shell.h"
 void printPrompt()
-{
-	char *userName = getUserName();
-	char currentDir[PATH_MAX];
+{	 static int first_time = 1;
 
-	getcwd(currentDir, sizeof(currentDir));
-	printf("%s@%s>", userName, currentDir);
+	if(first_time)
+	{
+	const char* CLEAR_SCREEN_ANSI = "moneam";
+
+        write(STDERR_FILENO, CLEAR_SCREEN_ANSI, 6);
+
+	}
+
+	printf("$ >");
 }

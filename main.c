@@ -31,10 +31,10 @@ int main()
 				}
 				parsedStr[parsedStrLen] = NULL;
 				parseString(sentence, parsedStr);
-				if (strcmp(parsedStr[0], "done") == 0 && parsedStrLen == 1)
+				if (strcmp(parsedStr[0], "exit") == 0 )
 				{
-					donePrint(numOfCommands, lengthOfCommands);
 					freeArr(parsedStr);
+					return (0);
 					break;
 				}
 				id = fork();

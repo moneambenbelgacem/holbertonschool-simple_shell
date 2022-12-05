@@ -12,11 +12,13 @@
 #include <sys/types.h>
 #include <time.h>
 #include <wait.h>
+#include <errno.h>
 void printPrompt();
 char *getUserName();
 int numOfWords(const char sentence[]);
 void parseString(char sentence[], char **parsedStr);
 void freeArr(char **parsedStr);
-void exeCommand(char **command);
+int exeCommand(char **command);
 void donePrint(int numOfCommands, int lengthOfCommands);
+void cd_home(void);
 #endif

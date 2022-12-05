@@ -23,6 +23,7 @@ void parseString(char sentence[], char **parsedStr)
 				exit(1);
 			}
 			strcpy(parsedStr[parsedIndex], tmpWord);
+			
 			parsedIndex++;
 			tmpIndex = 0;
 		}
