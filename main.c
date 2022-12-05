@@ -14,7 +14,10 @@ int main(void)
 	{
 		kep_it_handler();
 		counter = getline(&buffer, &i, stdin);
-		if (counter == 1)
+		if (counter == -1)
 			free_and_exit(buffer);
+		if (chars_checks(buffer) == -1)
+			continue;
+		buffer = clearBuffer(buffer, counter);
 	}
 }

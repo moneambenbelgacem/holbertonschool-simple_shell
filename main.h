@@ -19,5 +19,8 @@ int _setenv(char *name, char *value, int overwrite);
 int _strlen(const char *str);
 void free_and_exit(char *buffer);
 void free_env(char *var_name);
+int chars_checks(char *str);
+char *clearBuffer(char *str, int counter);
+char *_strtok(char *str, char delim);
 
 #endif
