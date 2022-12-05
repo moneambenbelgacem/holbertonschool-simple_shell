@@ -1,31 +1,30 @@
 #include "shell.h"
-char **lsh_split_line(char *line)
+void parseString(char sentence[], char **parsedStr)
 {
-  int bufsize = LSH_TOK_BUFSIZE, position = 0;
-  char **tokens = malloc(bufsize * sizeof(char*));
-  char *token;
-
-  if (!tokens) {
-    fprintf(stderr, "lsh: allocation error\n");
-    exit(EXIT_FAILURE);
-  }
-
-  token = strtok(line, LSH_TOK_DELIM);
-  while (token != NULL) {
-    tokens[position] = token;
-    position++;
-
-    if (position >= bufsize) {
-      bufsize += LSH_TOK_BUFSIZE;
-      tokens = realloc(tokens, bufsize * sizeof(char*));
-      if (!tokens) {
-        fprintf(stderr, "lsh: allocation error\n");
-        exit(EXIT_FAILURE);
-      }
-    }
-
-    token = strtok(NULL, LSH_TOK_DELIM);
-  }
-  tokens[position] = NULL;
-  return tokens;
+	char tmpWord[SENTENCE_LEN];
+	int tmpIndex = 0, parsedIndex = 0;
+	size_t i;
+	for ( i = 0; i < strlen(sentence); i++)
+	{
+		if (sentence[i] != ' ' && sentence[i] != '\n')
+		{
+			tmpWord[tmpIndex] = sentence[i];
+			tmpIndex++;
+		}
+		
+		else if ((sentence[i] == ' ' || sentence[i] == '\n') && tmpIndex > 0)
+		{
+			tmpWord[tmpIndex] = '\0';
+			parsedStr[parsedIndex] = (char *)malloc((strlen(tmpWord)) + 1);
+			if (parsedStr[parsedIndex] == NULL)
+			{
+				freeArr(parsedStr);
+				fprintf(stderr, "malloc failed");
+				exit(1);
+			}
+			strcpy(parsedStr[parsedIndex], tmpWord);
+			parsedIndex++;
+			tmpIndex = 0;
+		}
+	}
 }
