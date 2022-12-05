@@ -21,7 +21,7 @@ int main(void)
 				exit(EXIT_SUCCESS);
 			else
 			{
-				printPrompt();
+				
 				sentence = NULL;
 				perror("");
 				exit(1);
