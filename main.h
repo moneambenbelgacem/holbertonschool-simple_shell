@@ -26,5 +26,6 @@ char *_strdup(const char *str);
 int _strcmp(const char *s1, const char *s2);
 char *_getenv(const char *name);
 int check_dir(char *str);
+int check_exit(char *str);
 
 #endif

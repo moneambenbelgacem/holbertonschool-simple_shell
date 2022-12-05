@@ -59,3 +59,30 @@ int check_dir(char *str)
 	free(PWD);
 	return (builtIn);
 }
+
+/**
+ * check_exit - check string is 'exit' found
+ * @str: command (string)
+ * Return: integer
+ */
+int check_exit(char *str)
+{
+	char *cpy = _strdup(str);
+
+	if (_strcmp(_strtok(str, ' '), "exit") == 0)
+	{
+		free(cpy);
+		return (1);
+	}
+	free(cpy);
+	return (0);
+}
+
+int check_built_in(char *str)
+{
+	if (check_dir(str) == 1)
+		return (2);
+	if (check_exit(str) == 1)
+		return (3);
+	return (0);
+}
