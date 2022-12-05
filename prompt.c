@@ -1,6 +1,7 @@
 #include "shell.h"
 void printPrompt()
-{	 static int first_time = 1;
+{
+	static int first_time = 1;
 
 	if(first_time)
 	{
@@ -8,7 +9,7 @@ void printPrompt()
 
         write(STDERR_FILENO, CLEAR_SCREEN_ANSI, 6);
 
+	printf("$ >");
 	}
 
-	printf("$ >");
 }

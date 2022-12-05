@@ -7,20 +7,21 @@
 
 int main(void)
 {
-	int status, a, parsedStrLen;
+	int status = 0, a, parsedStrLen;
 	pid_t id;
 	size_t size = 32;
 	char buffer[100], *sentence = buffer, **parsedStr;
 
 	while (1)
 	{
-		printPrompt();
+		
 		if (getline(&sentence, &size, stdin) == -1)
 		{
 			if (feof(stdin))
 				exit(EXIT_SUCCESS);
 			else
 			{
+				printPrompt();
 				sentence = NULL;
 				perror("");
 				exit(1);
