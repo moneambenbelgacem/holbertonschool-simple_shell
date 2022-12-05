@@ -20,5 +20,4 @@ void parseString(char sentence[], char **parsedStr);
 void freeArr(char **parsedStr);
 int exeCommand(char **command);
 void donePrint(int numOfCommands, int lengthOfCommands);
-void cd_home(void);
 #endif

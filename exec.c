@@ -8,6 +8,7 @@ int exeCommand(char **command)
 		{
 			fprintf(stderr,"expect argument");
 			freeArr(command);
+			return (0);
 			
 		}
 		else
@@ -16,6 +17,7 @@ int exeCommand(char **command)
 			{
 				printf("hsh : cd");
 				freeArr(command);
+				return (0);
 			
 
 			}
