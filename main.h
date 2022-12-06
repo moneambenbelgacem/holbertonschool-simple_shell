@@ -30,5 +30,7 @@ int check_exit(char *str);
 int check_built_in(char *str);
 int get_return_value(char *str);
 int _isdigit(char *str);
+int check_env(char *str);
+void printEnv(void);
 
 #endif

@@ -89,5 +89,7 @@ int check_built_in(char *str)
 		return (2);
 	if (check_exit(str) == 1)
 		return (1);
+	if (check_env(str) == 1)
+		return (3);
 	return (0);
 }
