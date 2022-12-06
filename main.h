@@ -35,5 +35,7 @@ void printEnv(void);
 int unset_env(char *name);
 int check_unset_env(char *str);
 int check_set_env(char *str);
+void help_case(char *name);
+int check_help(char *str);
 
 #endif

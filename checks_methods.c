@@ -95,5 +95,7 @@ int check_built_in(char *str)
 		return (4);
 	if (check_set_env(str) == 1)
 		return (5);
+	if (check_help(str) == 1)
+		return (6);
 	return (0);
 }

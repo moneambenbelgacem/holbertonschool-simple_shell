@@ -76,3 +76,35 @@ int check_set_env(char *str)
 	free(cpy);
 	return (0);
 }
+
+/**
+ * check_help - check if command is 'help'
+ * @str: command (string)
+ * Return: integer
+ */
+int check_help(char *str)
+{
+	char *cpy = _strdup(str), *name = NULL;
+
+	if (_strcmp(_strtok(cpy, ' '), "help") == 0)
+	{
+		name = _strtok(NULL, ' ');
+		if (name == NULL)
+		{
+			write(1, "Usage: help [BUILTIN]\nList of Built-Ins\n", 41);
+			write(1, "cd\nexit\nsetenv\nunsetenv\nenv\nhelp\n", 34);
+			free(cpy);
+			return (1);
+		}
+		else
+			while (name != NULL)
+			{
+				help_case(name);
+				name = _strtok(NULL, ' ');
+			}
+		free(cpy);
+		return (1);
+	}
+	free(cpy);
+	return (0);
+}
