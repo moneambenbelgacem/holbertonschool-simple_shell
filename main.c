@@ -57,7 +57,7 @@ int main(void)
 					a = exeCommand(parsedStr);
 					if (a == 127)
 					{
-						errno = (127);
+						return(127);
 					}
 				}
 				else
