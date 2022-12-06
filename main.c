@@ -21,7 +21,7 @@ int main(void)
 				exit(EXIT_SUCCESS);
 			else
 			{
-				
+				printPrompt();
 				sentence = NULL;
 				perror("");
 				exit(1);
@@ -44,7 +44,7 @@ int main(void)
 				if (strcmp(parsedStr[0], "exit") == 0)
 				{
 					freeArr(parsedStr);
-					exit(0);
+					return(0);
 				}
 				if (id == -1)
 				{
@@ -69,11 +69,6 @@ int main(void)
 			}
 		}
 	}
-	if (status == 0)
-		errno = 0;
-	if (status == 512)
-		errno = 2;
-	if (status == 65280)
-		errno = 127;
+
 	return (0);
 }
