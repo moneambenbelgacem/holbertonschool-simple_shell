@@ -49,3 +49,30 @@ int check_unset_env(char *str)
 	free(cpy);
 	return (0);
 }
+
+/**
+ * check_set_env - check if command setenv
+ * @str: command (string)
+ * Return: integer
+ */
+int check_set_env(char *str)
+{
+	char *cpy = _strdup(str), *name = NULL, *value = NULL;
+
+	if (strcmp(_strtok(cpy, ' '), "setenv") == 0)
+	{
+		name = _strtok(NULL, ' ');
+		value = _strtok(NULL, ' ');
+		if (name == NULL || value == NULL)
+		{
+			write(STDERR_FILENO, "Usage: setenv [VARIABLE] [VALUE]\n", 34);
+			free(cpy);
+			return (1);
+		}
+		_setenv(name, value, 1);
+		free(cpy);
+		return (1);
+	}
+	free(cpy);
+	return (0);
+}

@@ -34,5 +34,6 @@ int check_env(char *str);
 void printEnv(void);
 int unset_env(char *name);
 int check_unset_env(char *str);
+int check_set_env(char *str);
 
 #endif
