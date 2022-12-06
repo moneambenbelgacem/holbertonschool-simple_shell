@@ -52,6 +52,36 @@ int _strcmp(const char *s1, const char *s2)
 	return (result);
 }
 
+/**
+ * _isdigit - check if string is digit
+ * @str: string
+ * Return: (0) is string is digit
+ */
+int _isdigit(char *str)
+{
+	int i = 0, flag = 0;
+
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 48 && str[i] <= 57)
+		{
+			i++;
+			continue;
+		}
+		else
+		{
+			flag++;
+			break;
+		}
+	}
+	return (flag);
+}
+
+/**
+ * get_return_value - set number exit by it
+ * @str: command (string)
+ * Return: integer
+ */
 int get_return_value(char *str)
 {
 	char *cpy = _strdup(str), *token;
@@ -64,5 +94,20 @@ int get_return_value(char *str)
 		free(cpy);
 		return (0);
 	}
-	/* con... */
+	if (_isdigit(token) == 0)
+		exit_value = atoi(token);
+	else
+	{
+		free(cpy);
+		write(STDERR_FILENO, "exit: Illegal number\n", 22);
+		return (-1);
+	}
+	free(cpy);
+	if (exit_value < 0)
+	{
+		write(STDERR_FILENO, "exit: Illegal number\n", 22);
+		exit_value = -1;
+	}
+
+	return (exit_value);
 }

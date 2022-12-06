@@ -28,5 +28,7 @@ char *_getenv(const char *name);
 int check_dir(char *str);
 int check_exit(char *str);
 int check_built_in(char *str);
+int get_return_value(char *str);
+int _isdigit(char *str);
 
 #endif

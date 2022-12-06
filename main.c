@@ -22,6 +22,11 @@ int main(void)
 		built_in = check_built_in(buffer);
 		if (built_in == 1)
 		{
+			exit_value = get_return_value(buffer);
+			if (exit_value >= 0)
+				break;
+			continue;
 		}
 	}
+	return (0);
 }
