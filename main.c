@@ -10,7 +10,7 @@ int main(void)
 	int status = 0, a, parsedStrLen;
 	pid_t id;
 	size_t size = 32;
-	char buffer[100], *sentence = buffer, **parsedStr;
+	char buffer[1024], *sentence = buffer, **parsedStr;
 
 	while (1)
 	{
@@ -21,7 +21,7 @@ int main(void)
 				exit(EXIT_SUCCESS);
 			else
 			{
-				printPrompt();
+				
 				sentence = NULL;
 				perror("");
 				exit(1);
