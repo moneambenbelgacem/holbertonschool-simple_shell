@@ -1,79 +1,27 @@
-#include "shell.h"
+#include "main.h"
 
-
-
-
-
-
+/**
+ * main - Entry place
+ * Return: integer
+ */
 int main(void)
 {
-	int status = 0, a, parsedStrLen;
-	pid_t id;
-	size_t size = 32;
-	char buffer[100], *sentence = buffer, **parsedStr;
+	size_t i = 0;
+	int counter = 0, built_in = 0, exit_value = 0;
+	char *buffer = NULL;
 
 	while (1)
 	{
-		
-		if (getline(&sentence, &size, stdin) == -1)
+		kep_it_handler();
+		counter = getline(&buffer, &i, stdin);
+		if (counter == -1)
+			free_and_exit(buffer);
+		if (chars_checks(buffer) == -1)
+			continue;
+		buffer = clearBuffer(buffer, counter);
+		built_in = check_built_in(buffer);
+		if (built_in == 1)
 		{
-			if (feof(stdin))
-				exit(EXIT_SUCCESS);
-			else
-			{
-				
-				sentence = NULL;
-				perror("");
-				exit(1);
-			}
-		}
-		else
-		{
-			parsedStrLen = numOfWords(sentence);
-			if (parsedStrLen > 0)
-			{
-				parsedStr = (char **)malloc((parsedStrLen + 1) * sizeof(char *));
-				if (parsedStr == NULL)
-				{
-					fprintf(stderr, "malloc failed");
-					return (1);
-				}
-				parsedStr[parsedStrLen] = NULL;
-				parseString(sentence, parsedStr);
-				id = fork();
-				if (strcmp(parsedStr[0], "exit") == 0)
-				{
-					freeArr(parsedStr);
-					exit(0);
-				}
-				if (id == -1)
-				{
-					perror("");
-					freeArr(parsedStr);
-					exit(98);
-				}
-				else if (id == 0)
-				{
-					a = exeCommand(parsedStr);
-					if (a == 127)
-					{
-						errno = (127);
-					}
-				}
-				else
-				{
-					while (waitpid(-1, &status, 0) != id)
-						;
-					freeArr(parsedStr);
-				}
-			}
 		}
 	}
-	if (status == 0)
-		errno = 0;
-	if (status == 512)
-		errno = 2;
-	if (status == 65280)
-		errno = 127;
-	return (0);
 }
