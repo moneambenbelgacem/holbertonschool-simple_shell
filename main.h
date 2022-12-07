@@ -13,6 +13,17 @@
 
 extern char **environ;
 
+/**
+ * struct list_s - lista
+ * @str: str
+ * @next: next
+ */
+typedef struct list_s
+{
+	char *str;
+	struct list_s *next;
+} list_t;
+
 void kep_it_handler(void);
 char *str_concat(char *s1, char *s2);
 int _setenv(char *name, char *value, int overwrite);
@@ -37,5 +48,9 @@ int check_unset_env(char *str);
 int check_set_env(char *str);
 void help_case(char *name);
 int check_help(char *str);
+int args(char *str);
+char *path(char *filename);
+int isDir(const char *path);
+char **tokenize(char *str, int builtIn);
 
 #endif

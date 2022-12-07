@@ -8,7 +8,7 @@ int main(void)
 {
 	size_t i = 0;
 	int counter = 0, built_in = 0, exit_value = 0;
-	char *buffer = NULL;
+	char *buffer = NULL, *dup = NULL, **argv = NULL;
 
 	while (1)
 	{
@@ -27,6 +27,9 @@ int main(void)
 				break;
 			continue;
 		}
+		dup = _strdup(buffer);
+		argv = tokenize(dup, built_in);
+		printf("%s\n", argv[0]);
 	}
 	return (0);
 }
