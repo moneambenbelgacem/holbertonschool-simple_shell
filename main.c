@@ -43,5 +43,6 @@ int main(void)
 	}
 	if (built_in != 1)
 		free_array_dup(argv, dup);
+	free(buffer);
 	return (exit_value);
 }
