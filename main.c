@@ -41,6 +41,7 @@ int main(void)
 		if (child_pid != 0)
 			wait_and_free(status, argv, dup);
 	}
-
-	return (0);
+	if (built_in != 1)
+		free_array_dup(argv, dup);
+	return (exit_value);
 }
