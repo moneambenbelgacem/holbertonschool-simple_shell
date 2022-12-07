@@ -69,7 +69,7 @@ int check_exit(char *str)
 {
 	char *cpy = _strdup(str);
 
-	if (_strcmp(_strtok(str, ' '), "exit") == 0)
+	if (_strcmp(_strtok(cpy, ' '), "exit") == 0)
 	{
 		free(cpy);
 		return (1);
