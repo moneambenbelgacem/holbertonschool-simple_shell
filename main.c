@@ -7,7 +7,7 @@
 int main(void)
 {
 	size_t i = 0;
-	int counter = 0, built_in = 0, exit_value = 0;
+	int counter = 0, built_in = 0, exit_value = 0, child_pid = 0;
 	char *buffer = NULL, *dup = NULL, **argv = NULL;
 
 	while (1)
@@ -29,7 +29,10 @@ int main(void)
 		}
 		dup = _strdup(buffer);
 		argv = tokenize(dup, built_in);
-		printf("%s\n", argv[0]);
+		if (built_in == 0 && its_executable(argv[0]) == 0)
+			child_pid = child_fork(child_pid, argv[0]);
+		else
+			child_pid = -1;
 	}
 	return (0);
 }

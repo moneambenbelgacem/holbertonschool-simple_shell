@@ -52,5 +52,7 @@ int args(char *str);
 char *path(char *filename);
 int isDir(const char *path);
 char **tokenize(char *str, int builtIn);
+int its_executable(char *path);
+int child_fork(pid_t child_pid, char *name);
 
 #endif
