@@ -69,7 +69,7 @@ int check_exit(char *str)
 {
 	char *cpy = _strdup(str);
 
-	if (_strcmp(_strtok(str, ' '), "exit") == 0)
+	if (_strcmp(_strtok(cpy, ' '), "exit") == 0)
 	{
 		free(cpy);
 		return (1);
@@ -78,11 +78,24 @@ int check_exit(char *str)
 	return (0);
 }
 
+/**
+ * check_built_in - check for command
+ * @str: command (string)
+ * Return: integer
+ */
 int check_built_in(char *str)
 {
 	if (check_dir(str) == 1)
 		return (2);
 	if (check_exit(str) == 1)
+		return (1);
+	if (check_env(str) == 1)
 		return (3);
+	if (check_unset_env(str) == 1)
+		return (4);
+	if (check_set_env(str) == 1)
+		return (5);
+	if (check_help(str) == 1)
+		return (6);
 	return (0);
 }
