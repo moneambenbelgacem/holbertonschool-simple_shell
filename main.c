@@ -7,7 +7,7 @@
 int main(void)
 {
 	size_t i = 0;
-	int counter = 0, built_in = 0, exit_value = 0, child_pid = 0;
+	int counter = 0, built_in = 0, exit_value = 0, child_pid = 0, status = 0;
 	char *buffer = NULL, *dup = NULL, **argv = NULL;
 
 	while (1)
@@ -33,6 +33,14 @@ int main(void)
 			child_pid = child_fork(child_pid, argv[0]);
 		else
 			child_pid = -1;
+		if (child_pid == 0 && execve(argv[0], argv, environ) == -1)
+		{
+			perror(argv[0]);
+			break;
+		}
+		if (child_pid != 0)
+			wait_and_free(status, argv, dup);
 	}
+
 	return (0);
 }

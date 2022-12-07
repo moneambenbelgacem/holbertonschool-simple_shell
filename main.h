@@ -54,5 +54,7 @@ int isDir(const char *path);
 char **tokenize(char *str, int builtIn);
 int its_executable(char *path);
 int child_fork(pid_t child_pid, char *name);
+void free_array_dup(char **array, char *dup);
+void wait_and_free(int status, char **argv, char *dup);
 
 #endif

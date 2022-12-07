@@ -32,3 +32,34 @@ void free_and_exit(char *buffer)
 	free_env("OLDPWD");
 	exit(0);
 }
+
+/**
+ * free_array_dup - free array and dup
+ * @array: array of string
+ * @dup: string
+ */
+void free_array_dup(char **array, char *dup)
+{
+	int i = 0;
+
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array[i]);
+	free(array);
+	free(dup);
+}
+
+/**
+ * wait_and_free - wait and free
+ * @status: integer
+ * @argv: array of string
+ * @dup: string
+ */
+void wait_and_free(int status, char **argv, char *dup)
+{
+	wait(&status);
+	free_array_dup(argv, dup);
+}
