@@ -10,7 +10,7 @@ int main(void)
 	int status = 0, a, parsedStrLen;
 	pid_t id;
 	size_t size = 32;
-	char buffer[100], *sentence = buffer, **parsedStr;
+	char buffer[1024], *sentence = buffer, **parsedStr;
 
 	while (1)
 	{
@@ -44,7 +44,7 @@ int main(void)
 				if (strcmp(parsedStr[0], "exit") == 0)
 				{
 					freeArr(parsedStr);
-					exit(0);
+					return(0);
 				}
 				if (id == -1)
 				{
@@ -57,7 +57,7 @@ int main(void)
 					a = exeCommand(parsedStr);
 					if (a == 127)
 					{
-						errno = (127);
+						return(127);
 					}
 				}
 				else
@@ -69,11 +69,6 @@ int main(void)
 			}
 		}
 	}
-	if (status == 0)
-		errno = 0;
-	if (status == 512)
-		errno = 2;
-	if (status == 65280)
-		errno = 127;
+
 	return (0);
 }
