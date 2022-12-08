@@ -1,15 +1,20 @@
 #include "shell.h"
+
+/**
+ * exeCommand - function
+ * @command: array of string
+ * Return: integer
+ */
 int exeCommand(char **command)
 {
-	
+
 	if (strcmp(command[0], "cd") == 0)
 	{
 		if (command[1] == NULL)
 		{
-			fprintf(stderr,"expect argument");
+			fprintf(stderr, "expect argument");
 			freeArr(command);
 			return (0);
-			
 		}
 		else
 		{
@@ -18,25 +23,19 @@ int exeCommand(char **command)
 				printf("hsh : cd");
 				freeArr(command);
 				return (0);
-			
-
 			}
 		}
-	
-
-			
-		
 	}
 	else if (execvp(command[0], command) != -1)
 	{
 		freeArr(command);
-		return(1);
+		return (1);
 	}
 	else
 	{
 		perror("command not found");
 		freeArr(command);
-		return(1);
+		return (1);
 	}
-	return(1);
+	return (1);
 }

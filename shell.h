@@ -2,6 +2,7 @@
 #define HEADER_FILE
 #define SENTENCE_LEN 511
 #define PATH_MAX 512
+
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -13,6 +14,7 @@
 #include <time.h>
 #include <wait.h>
 #include <errno.h>
+
 void printPrompt();
 char *getUserName();
 int numOfWords(const char sentence[]);
@@ -20,4 +22,5 @@ void parseString(char sentence[], char **parsedStr);
 void freeArr(char **parsedStr);
 int exeCommand(char **command);
 void donePrint(int numOfCommands, int lengthOfCommands);
+
 #endif

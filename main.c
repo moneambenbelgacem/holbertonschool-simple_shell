@@ -1,10 +1,9 @@
 #include "shell.h"
 
-
-
-
-
-
+/**
+ * main - entry point
+ * Return: integer
+ */
 int main(void)
 {
 	int status = 0, a, parsedStrLen;
@@ -14,14 +13,14 @@ int main(void)
 
 	while (1)
 	{
-		
+
 		if (getline(&sentence, &size, stdin) == -1)
 		{
 			if (feof(stdin))
 				exit(EXIT_SUCCESS);
 			else
 			{
-				
+
 				sentence = NULL;
 				perror("");
 				exit(1);
@@ -44,7 +43,7 @@ int main(void)
 				if (strcmp(parsedStr[0], "exit") == 0)
 				{
 					freeArr(parsedStr);
-					return(0);
+					return (0);
 				}
 				if (id == -1)
 				{
@@ -57,7 +56,7 @@ int main(void)
 					a = exeCommand(parsedStr);
 					if (a == 127)
 					{
-						return(127);
+						return (127);
 					}
 				}
 				else
