@@ -15,7 +15,7 @@
 #include <wait.h>
 #include <errno.h>
 
-void printPrompt();
+void printPrompt(void);
 char *getUserName();
 int numOfWords(const char sentence[]);
 void parseString(char sentence[], char **parsedStr);
