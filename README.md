@@ -1,5 +1,7 @@
 # Simple Shell
 
+<img src="https://camo.githubusercontent.com/a279f38966c0c0101734bdc0051a6e15eeaa2f4755379e408171a0bc12d8c77a/68747470733a2f2f692e696d6775722e636f6d2f6e53516161516a2e6a7067"/>
+
 ## Introduction
 
 This is a Holberton School project that consists of making our own simple shell with a limited amount of functions from the standard library.
